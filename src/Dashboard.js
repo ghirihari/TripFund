@@ -27,7 +27,6 @@ export default class Dashboard extends Component {
             "Total: "+this.Total+"Rs \n";
             
         navigator.clipboard.writeText(this.report);
-
         this.setState({status:"Copied"})
     }
 
