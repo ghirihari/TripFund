@@ -7,27 +7,31 @@ class App extends Component {
   {
     super();
     this.state = {
-      from:{city:"",state:""},
-      to:{city:"",state:""},
+      from:{city:"Coimbatore",state:""},
+      to:{city:"Goa",state:""},
       price:{fuel:null,food:null,stay:null},
-      stay:{day:null,price:null},
-      food:{day:null,price:null},
+      stay:{day:6,price:800},
+      food:{day:7,price:150},
       distance:null,
       time:null,
       fuel:null,
-      mileage:null
+      mileage:40
     }
-    this.fuelPrice = 72;
+    this.fuelPrice = 84;
   }
 
   secondsToHms = (d) => {
     d = Number(d);
     var h = Math.floor(d / 3600);
     var m = Math.floor(d % 3600 / 60);
-
+    if(m >= 30) h += 1;
+    
     var hDisplay = h > 0 ? h + (h === 1 ? " hour " : " hours ") : "";
-    var mDisplay = m > 0 ? m + (m === 1 ? " mimute " : " minutes") : "";
-    return hDisplay + mDisplay; 
+    // var mDisplay = m > 0 ? m + (m === 1 ? " minute " : " minutes") : "";
+
+    
+
+    return hDisplay; 
 
 }
 
@@ -72,15 +76,15 @@ newEstimation = (fuelPrice) =>
                   stay:this.state.stay.price*this.state.stay.day
                 }
               })
-        this.newEstimation(this.state.fuel*72)
+        this.newEstimation(this.state.fuel * this.fuelPrice)
       })
 };
 
 reset = () =>
 {
   this.setState({
-    from:{city:"Coimbatore",state:""},
-    to:{city:"Chennai",state:""},
+    from:{city:"",state:""},
+    to:{city:"",state:""},
     price:{fuel:0,food:0,stay:0},
     stay:{day:null,price:null},
     food:{day:null,price:null},
@@ -219,7 +223,7 @@ if(!this.state.distance)
           <div class="card text-white bg-dark mb-3" >
             <div class="card-header">Mileage</div>
             <div class="card-body">
-                <h5 class="card-title">{this.state.mileage} Km/L-</h5>
+                <h5 class="card-title">{this.state.mileage} Km/L</h5>
                 <p class="card-text">Average</p>
             </div>
           </div>
@@ -233,7 +237,7 @@ if(!this.state.distance)
             <div class="card-header">Distance</div>
             <div class="card-body">
                 <h5 class="card-title">{this.state.distance} Kms</h5>
-                <p class="card-text">Approx</p>
+                <p class="card-text">One Way</p>
             </div>
           </div>
         </div>
@@ -253,7 +257,7 @@ if(!this.state.distance)
             <div class="card-header">Fuel Needed</div>
             <div class="card-body">
                 <h5 class="card-title">{this.state.fuel} Liters</h5>
-                <p class="card-text">Mileage : {this.state.mileage} Km/L</p>
+                <p class="card-text">One Way : {this.state.fuel/2} Liters</p>
             </div>
           </div>
         </div>
@@ -345,7 +349,7 @@ if(!this.state.distance)
       <div class="card text-white bg-dark mb-3" >
         <div class="card-header">Mileage</div>
         <div class="card-body">
-            <h5 class="card-title">{this.state.mileage} Km/L-</h5>
+            <h5 class="card-title">{this.state.mileage} Km/L</h5>
             <p class="card-text">Average</p>
         </div>
       </div>
@@ -357,7 +361,7 @@ if(!this.state.distance)
         <div class="card-header">Distance</div>
         <div class="card-body">
             <h5 class="card-title">{this.state.distance} Kms</h5>
-            <p class="card-text">Approx</p>
+            <p class="card-text">One Way</p>
         </div>
       </div>
     </div>
@@ -377,7 +381,7 @@ if(!this.state.distance)
         <div class="card-header">Fuel Needed</div>
         <div class="card-body">
             <h5 class="card-title">{this.state.fuel} Liters</h5>
-            <p class="card-text">Mileage : {this.state.mileage} Km/L</p>
+            <p class="card-text">One Way : {this.state.fuel/2} Liters</p>
         </div>
       </div>
     </div>
@@ -415,7 +419,7 @@ if(!this.state.distance)
       <div class="card text-white bg-danger mb-3" >
         <div class="card-header">Grand Total</div>
         <div class="card-body">
-            <h5 class="card-title" >{this.state.price.fuel+this.state.price.food+this.state.price.stay} Rs</h5>
+            <h5 class="card-title" >{(this.state.price.fuel)+this.state.price.food+this.state.price.stay} Rs</h5>
             <p class="card-text">Approx</p>
         </div>
       </div>
