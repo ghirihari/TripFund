@@ -60,6 +60,8 @@ body{
 
 .btn{
   font-style: italic;
+  margin: 5px;
+  width:15%;
 }
 
 .col{

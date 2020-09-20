@@ -8,16 +8,29 @@ class App extends Component {
   constructor()
   {
     super();
+    // this.state = {
+    //   from:{city:"",state:""},
+    //   to:{city:"",state:""},
+    //   price:{fuel:null,food:null,stay:null},
+    //   stay:{day:null,price:null},
+    //   food:{day:null,price:null},
+    //   distance:null,
+    //   time:null,
+    //   fuel:null,
+    //   mileage:null
+    // }
+
     this.state = {
-      from:{city:"",state:""},
-      to:{city:"",state:""},
+      from:{city:"Coimbatore",state:""},
+      to:{city:"Panaji",state:""},
+      stay:{day:6,price:800},
+      food:{day:7,price:150},
+      mileage:40,
+      
       price:{fuel:null,food:null,stay:null},
-      stay:{day:null,price:null},
-      food:{day:null,price:null},
       distance:null,
       time:null,
-      fuel:null,
-      mileage:null
+      fuel:null
     }
     this.fuelPrice = 84;
   }
@@ -180,7 +193,8 @@ if(!this.state.distance)
       fuel = {this.state.fuel}
       price = {this.state.price}
       reset = {this.reset}
-    ></Dashboard>
+      fuelPrice = {this.fuelPrice}>
+    </Dashboard>
     );
   }
 }

@@ -2,6 +2,35 @@ import React, { Component } from 'react';
 
 export default class Dashboard extends Component {
 
+    constructor(props)
+    {
+        super(props);
+        this.state = {
+            status:"Copy"
+        }
+        if(this.props.price){
+            this.Total = this.props.price.stay+this.props.price.stay+this.props.price.fuel;
+       }
+    }
+
+    copy = () => {
+        this.report =   
+            "From: "+this.props.from.city+","+this.props.from.state+"\n"+
+            "To: "+this.props.to.city+","+this.props.to.state+"\n"+
+            "Duration: "+this.props.food.day+" Days,"+this.props.stay.day+" Nights\n"+
+            "Mileage: "+this.props.mileage+" Km/L\n"+
+            "Riding Time: "+this.props.time+"\n"+
+            "Fuel Needed: "+this.props.fuel+ " L\n*Budget*\n"+
+            "Fuel ("+this.props.fuelPrice+"*"+this.props.fuel+"): "+this.props.price.fuel+" Rs\n"+
+            "Stay ("+this.props.stay.price+"*"+this.props.stay.day+"): "+this.props.price.food+" Rs\n"+
+            "Food ("+this.props.food.price+"*"+this.props.food.day+"): "+this.props.price.stay+" Rs\n"+
+            "Total: "+this.Total+"Rs \n";
+            
+        navigator.clipboard.writeText(this.report);
+
+        this.setState({status:"Copied"})
+    }
+
     render(){
         return(
             <>
@@ -125,9 +154,14 @@ export default class Dashboard extends Component {
             </div>
             
             <div className="form-group" style={{textAlign:'center'}}> 
-                    <button onClick={this.props.reset} type="submit" className="btn btn-danger">Reset</button>
-                </div>
+                <button onClick={this.copy} className="btn btn-warning btn-lg">{this.state.status}</button>
+                <button onClick={this.props.reset} className="btn btn-danger btn-lg">Reset</button>
             </div>
+            
+            
+            </div>
+
+            
         </div>
         
         {/* Mobile */}
@@ -245,7 +279,8 @@ export default class Dashboard extends Component {
         
             
             <div className="form-group" style={{textAlign:'center'}}> 
-                <button onClick={this.props.reset} type="submit" className="btn btn-danger">Reset</button>
+                <button onClick={this.props.copy} className="btn btn-warning btn-lg">{this.state.status}</button>
+                <button onClick={this.props.reset} type="submit" className="btn btn-danger btn-lg">Reset</button>
             </div>
         
             
