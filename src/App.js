@@ -7,9 +7,9 @@ class App extends Component {
   {
     super();
     this.state = {
-      from:{city:"Coimbatore",state:""},
-      to:{city:"Chennai",state:""},
-      price:{fuel:0,food:0,stay:0},
+      from:{city:"",state:""},
+      to:{city:"",state:""},
+      price:{fuel:null,food:null,stay:null},
       stay:{day:null,price:null},
       food:{day:null,price:null},
       distance:null,
@@ -25,8 +25,8 @@ class App extends Component {
     var h = Math.floor(d / 3600);
     var m = Math.floor(d % 3600 / 60);
 
-    var hDisplay = h > 0 ? h + (h === 1 ? "h " : "h ") : "";
-    var mDisplay = m > 0 ? m + (m === 1 ? " m, " : " m") : "";
+    var hDisplay = h > 0 ? h + (h === 1 ? " hour " : " hours ") : "";
+    var mDisplay = m > 0 ? m + (m === 1 ? " mimute " : " minutes") : "";
     return hDisplay + mDisplay; 
 
 }
@@ -182,55 +182,255 @@ if(!this.state.distance)
 );
 }else{
   return(
-  <div className="containe">
+    <>
+  <div className="containe d-none d-lg-block">
     <div className="center">
       <h1>- TRIP X FUND -</h1>
- 
-    <table className="table">
-      <tbody>
-        <tr>
-          <td>From</td>
-          <td>{this.state.from.city},{this.state.from.state}</td>
-        </tr>
-        <tr>
-          <td>To</td>
-          <td>{this.state.to.city},{this.state.to.state}</td>
-        </tr>
-        <tr>
-          <td>Distance</td>
-          <td>{this.state.distance} Kms</td>
-        </tr>
-        <tr>
-          <td>Ride Time</td>
-          <td>{this.state.time}</td>
-        </tr>
-        <tr>
-          <td>Fuel (Mileage {this.state.mileage})</td>
-          <td>{this.state.fuel} Litres</td>
-        </tr>
-        <tr>
-          <td>Fuel Price</td>
-          <td>{this.state.price.fuel} Rs</td>
-        </tr>
-        <tr>
-          <td>Stay Price</td>
-          <td>{this.state.price.stay} Rs</td>
-        </tr>
-        <tr>
-          <td>Food Price</td>
-          <td>{this.state.price.food} Rs</td>
-        </tr>
-        <tr>
-          <td>Grand Total</td>
-          <td>{this.state.price.fuel+this.state.price.food+this.state.price.stay} Rs</td>
-        </tr>
-      </tbody>
-    </table>
-    <div className="form-group" style={{textAlign:'center'}}> 
+      <div class="row dashboard">
+        <div className="col">
+          <div class="card text-white bg-dark mb-3" >
+            <div class="card-header">From</div>
+            <div class="card-body">
+                <h5 class="card-title">{this.state.from.city}</h5>
+                <p class="card-text">{this.state.from.state.toLowerCase()}</p>
+            </div>
+          </div>
+        </div>
+        <div className="col">
+          <div class="card text-white bg-dark mb-3" >
+            <div class="card-header">To</div>
+            <div class="card-body">
+                <h5 class="card-title">{this.state.to.city}</h5>
+                <p class="card-text">{this.state.to.state.toLowerCase()}</p>
+            </div>
+          </div>
+        </div>
+        <div className="col">
+          <div class="card text-white bg-dark mb-3" >
+            <div class="card-header">Duration</div>
+            <div class="card-body">
+                <h5 class="card-title">{this.state.food.day} Days</h5>
+                <p class="card-text">{this.state.stay.day} Nights</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="col">
+          <div class="card text-white bg-dark mb-3" >
+            <div class="card-header">Mileage</div>
+            <div class="card-body">
+                <h5 class="card-title">{this.state.mileage} Km/L-</h5>
+                <p class="card-text">Average</p>
+            </div>
+          </div>
+        </div>
+        </div>
+
+
+        <div class="row dashboard">
+        <div className="col">
+          <div class="card text-white bg-danger mb-3" >
+            <div class="card-header">Distance</div>
+            <div class="card-body">
+                <h5 class="card-title">{this.state.distance} Kms</h5>
+                <p class="card-text">Approx</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="col">
+          <div class="card text-white bg-danger mb-3" >
+            <div class="card-header">Ride Time</div>
+            <div class="card-body">
+                <h5 class="card-title">{this.state.time}</h5>
+                <p class="card-text">Approx</p>
+            </div>
+          </div>
+        </div>
+        
+        <div className="col">
+          <div class="card text-white bg-danger mb-3" >
+            <div class="card-header">Fuel Needed</div>
+            <div class="card-body">
+                <h5 class="card-title">{this.state.fuel} Liters</h5>
+                <p class="card-text">Mileage : {this.state.mileage} Km/L</p>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div className="row dashboard">
+        <div className="col">
+          <div class="card text-white bg-danger mb-3" >
+            <div class="card-header">Price For Fuel</div>
+            <div class="card-body">
+                <h5 class="card-title">{this.state.price.fuel} Rs</h5>
+                <p class="card-text">Price : {this.fuelPrice} /Liter</p>
+            </div>
+          </div>
+        </div>
+        <div className="col">
+          <div class="card text-white bg-danger mb-3" >
+            <div class="card-header">Price For Stay</div>
+            <div class="card-body">
+                <h5 class="card-title">{this.state.price.stay} Rs</h5>
+                <p class="card-text">Stay : {this.state.stay.price} per day</p>
+            </div>
+          </div>
+        </div>
+        <div className="col">
+          <div class="card text-white bg-danger mb-3" >
+            <div class="card-header">Price For Food</div>
+            <div class="card-body">
+                <h5 class="card-title">{this.state.price.food} Rs</h5>
+                <p class="card-text">Stay : {this.state.food.price} per day</p>
+            </div>
+          </div>
+        </div>
+
+        
+        </div>
+        <div className='row dashboard'>
+                  
+        <div className="col">
+          <div class="card text-white bg-danger mb-3" >
+            <div class="card-header">Grand Total</div>
+            <div class="card-body">
+                <h5 class="card-title" >{this.state.price.fuel+this.state.price.food+this.state.price.stay} Rs</h5>
+                <p class="card-text">Approx</p>
+            </div>
+          </div>
+        </div>
+     </div>
+     
+     <div className="form-group" style={{textAlign:'center'}}> 
           <button onClick={this.reset} type="submit" className="btn btn-danger">Reset</button>
         </div>
     </div>
 </div>
+
+{/* Mobile */}
+<div className="containe d-lg-none">
+<div className="center">
+  <h1>- TRIP X FUND -</h1>
+  <div className="dashboard">
+    <div className="col">
+      <div class="card text-white bg-dark mb-3" >
+        <div class="card-header">From</div>
+        <div class="card-body">
+            <h5 class="card-title">{this.state.from.city}</h5>
+            <p class="card-text">{this.state.from.state.toLowerCase()}</p>
+        </div>
+      </div>
+    </div>
+    <div className="col">
+      <div class="card text-white bg-dark mb-3" >
+        <div class="card-header">To</div>
+        <div class="card-body">
+            <h5 class="card-title">{this.state.to.city}</h5>
+            <p class="card-text">{this.state.to.state.toLowerCase()}</p>
+        </div>
+      </div>
+    </div>
+    <div className="col">
+      <div class="card text-white bg-dark mb-3" >
+        <div class="card-header">Duration</div>
+        <div class="card-body">
+            <h5 class="card-title">{this.state.food.day} Days</h5>
+            <p class="card-text">{this.state.stay.day} Nights</p>
+        </div>
+      </div>
+    </div>
+
+    <div className="col">
+      <div class="card text-white bg-dark mb-3" >
+        <div class="card-header">Mileage</div>
+        <div class="card-body">
+            <h5 class="card-title">{this.state.mileage} Km/L-</h5>
+            <p class="card-text">Average</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div className="col">
+      <div class="card text-white bg-danger mb-3" >
+        <div class="card-header">Distance</div>
+        <div class="card-body">
+            <h5 class="card-title">{this.state.distance} Kms</h5>
+            <p class="card-text">Approx</p>
+        </div>
+      </div>
+    </div>
+
+    <div className="col">
+      <div class="card text-white bg-danger mb-3" >
+        <div class="card-header">Ride Time</div>
+        <div class="card-body">
+            <h5 class="card-title">{this.state.time}</h5>
+            <p class="card-text">Approx</p>
+        </div>
+      </div>
+    </div>
+    
+    <div className="col">
+      <div class="card text-white bg-danger mb-3" >
+        <div class="card-header">Fuel Needed</div>
+        <div class="card-body">
+            <h5 class="card-title">{this.state.fuel} Liters</h5>
+            <p class="card-text">Mileage : {this.state.mileage} Km/L</p>
+        </div>
+      </div>
+    </div>
+    <div className="col">
+      <div class="card text-white bg-danger mb-3" >
+        <div class="card-header">Price For Fuel</div>
+        <div class="card-body">
+            <h5 class="card-title">{this.state.price.fuel} Rs</h5>
+            <p class="card-text">Price : {this.fuelPrice} /Liter</p>
+        </div>
+      </div>
+    </div>
+    <div className="col">
+      <div class="card text-white bg-danger mb-3" >
+        <div class="card-header">Price For Stay</div>
+        <div class="card-body">
+            <h5 class="card-title">{this.state.price.stay} Rs</h5>
+            <p class="card-text">Stay : {this.state.stay.price} per day</p>
+        </div>
+      </div>
+    </div>
+    <div className="col">
+      <div class="card text-white bg-danger mb-3" >
+        <div class="card-header">Price For Food</div>
+        <div class="card-body">
+            <h5 class="card-title">{this.state.price.food} Rs</h5>
+            <p class="card-text">Stay : {this.state.food.price} per day</p>
+        </div>
+    </div>
+
+    
+    </div>
+              
+    <div className="col">
+      <div class="card text-white bg-danger mb-3" >
+        <div class="card-header">Grand Total</div>
+        <div class="card-body">
+            <h5 class="card-title" >{this.state.price.fuel+this.state.price.food+this.state.price.stay} Rs</h5>
+            <p class="card-text">Approx</p>
+        </div>
+      </div>
+    </div>
+
+    
+    <div className="form-group" style={{textAlign:'center'}}> 
+      <button onClick={this.reset} type="submit" className="btn btn-danger">Reset</button>
+    </div>
+
+    
+</div>
+</div>
+</div>
+</>
     );
   }
 }

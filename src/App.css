@@ -9,6 +9,10 @@ body{
     display: flex;
     min-height: 100vh;
   }
+/* 
+.card{
+  box-shadow: 3px 3px #DC3545;
+} */
 
 .center {
     border-radius: 5%;
@@ -21,14 +25,16 @@ body{
   }
 
   h1{
-      font-family: 'Raleway', sans-serif;
       text-align: center;
       padding: 10px;
       font-style: italic;
       color:white;
       text-shadow: 2px 2px #DC3545;
+    }
 
-   
+    .dashboard{
+      font-family: 'Lato', sans-serif;
+      text-align: center;
     }
 
   .form-control {
@@ -54,4 +60,20 @@ body{
 
 .btn{
   font-style: italic;
+}
+
+.col{
+  padding: 0px 10px 0px 10px;
+}
+
+.card-header{
+  font-size: 1.5em;
+}
+
+.card-title{
+  font-size: 2.2em;
+}
+
+.card-header{
+font-style: italic;
 }
