@@ -1,16 +1,57 @@
-.container {
+body{
+  background: #202020;
+  font-family: 'Raleway', sans-serif;
+
+}
+  
+.containe {
     align-items: center;
     display: flex;
     min-height: 100vh;
   }
 
 .center {
-    background: white;
+    border-radius: 5%;
+    color: white;
+    background: #202020;
     margin: 0 auto;
     padding: 10px;
-    width: 80%;
+    width: 100%;
+    padding: 0px 20px 0px 20px;
   }
 
   h1{
+      font-family: 'Raleway', sans-serif;
       text-align: center;
-  }
+      padding: 10px;
+      font-style: italic;
+      color:white;
+      text-shadow: 2px 2px #DC3545;
+
+   
+    }
+
+  .form-control {
+    color: #ffffff;
+    background-color: rgba(0,0,0,0.5);
+    border-color: rgba(0,0,0,0.5);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,0,0,0.5);
+}
+  .form-control:focus {
+    color: #ffffff;
+    background-color: rgba(0,0,0,0.5);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+.table{
+  color: #ffffff;
+  text-align: center;
+  border-color: #ffffff;
+}
+
+
+.btn{
+  font-style: italic;
+}

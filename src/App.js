@@ -8,13 +8,13 @@ class App extends Component {
     super();
     this.state = {
       from:{city:"Coimbatore",state:""},
-      to:{city:"Mumbai",state:""},
+      to:{city:"Chennai",state:""},
       price:{fuel:0,food:0,stay:0},
       stay:{day:null,price:null},
       food:{day:null,price:null},
-      distance:0,
-      time:0,
-      fuel:0,
+      distance:null,
+      time:null,
+      fuel:null,
       mileage:null
     }
     this.fuelPrice = 72;
@@ -76,6 +76,22 @@ newEstimation = (fuelPrice) =>
       })
 };
 
+reset = () =>
+{
+  this.setState({
+    from:{city:"Coimbatore",state:""},
+    to:{city:"Chennai",state:""},
+    price:{fuel:0,food:0,stay:0},
+    stay:{day:null,price:null},
+    food:{day:null,price:null},
+    distance:0,
+    time:0,
+    fuel:0,
+    mileage:null
+  })
+}
+
+
 handleChange = (e) => {
   e.preventDefault();
   if(e.target.id === "from")
@@ -117,20 +133,20 @@ handleChange = (e) => {
 if(!this.state.distance)
 {
     return (
-    <div className="container">
+    <div className="containe">
       <div className="center">
-      <h1>Trip Fund calculater</h1>
+      <h1>- TRIP X FUND -</h1>
         <div className="form-group"> 
-          <label>From</label>
+          {/* <label>From</label> */}
           <input id="from" type="text" className="form-control" placeholder="From" value={this.state.from.city} onChange={this.handleChange}></input>
         </div>
         <div className="form-group">
-          <label>To</label>
+          {/* <label>To</label> */}
           <input id="to" type="text" className="form-control" placeholder="To" value={this.state.to.city} onChange={this.handleChange}></input>
         </div>
      
         <div className="form-group"> 
-          <label>Mileage</label>
+          {/* <label>Mileage</label> */}
           <input id="mileage" type="number" className="form-control" placeholder="Mileage" value={this.state.mileage} onChange={this.handleChange}></input>
         </div>
        
@@ -157,15 +173,18 @@ if(!this.state.distance)
             </div>
           </div>
         </div>
-        <button onClick={this.calculate} type="submit" className="btn btn-primary">Submit</button>
+        
+        <div className="form-group" style={{textAlign:'center'}}> 
+          <button onClick={this.calculate} type="submit" className="btn btn-danger">Submit</button>
+        </div>
       </div>
       </div>
 );
 }else{
   return(
-  <div className="container">
+  <div className="containe">
     <div className="center">
-      <h1>Trip Fund calculater</h1>
+      <h1>- TRIP X FUND -</h1>
  
     <table className="table">
       <tbody>
@@ -207,6 +226,9 @@ if(!this.state.distance)
         </tr>
       </tbody>
     </table>
+    <div className="form-group" style={{textAlign:'center'}}> 
+          <button onClick={this.reset} type="submit" className="btn btn-danger">Reset</button>
+        </div>
     </div>
 </div>
     );
