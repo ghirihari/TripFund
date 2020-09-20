@@ -9,15 +9,15 @@ class App extends Component {
   {
     super();
     this.state = {
-      from:{city:"Coimbatore",state:""},
-      to:{city:"Goa",state:""},
+      from:{city:"",state:""},
+      to:{city:"",state:""},
       price:{fuel:null,food:null,stay:null},
-      stay:{day:6,price:800},
-      food:{day:7,price:150},
+      stay:{day:null,price:null},
+      food:{day:null,price:null},
       distance:null,
       time:null,
       fuel:null,
-      mileage:40
+      mileage:null
     }
     this.fuelPrice = 84;
   }
