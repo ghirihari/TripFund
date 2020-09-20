@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css'
+import Form from './Form'
+import Dashboard from './Dashboard'
 
 class App extends Component {
 
@@ -28,9 +30,7 @@ class App extends Component {
     
     var hDisplay = h > 0 ? h + (h === 1 ? " hour " : " hours ") : "";
     // var mDisplay = m > 0 ? m + (m === 1 ? " minute " : " minutes") : "";
-
-    
-
+  
     return hDisplay; 
 
 }
@@ -76,6 +76,26 @@ newEstimation = (fuelPrice) =>
                   stay:this.state.stay.price*this.state.stay.day
                 }
               })
+        
+      if(!this.state.to.city)
+      {
+        this.setState(
+          {
+            to:{
+              city:this.state.to.state,
+              state:this.state.to.state}}
+          )
+      }
+      if(!this.state.to.state)
+      {
+        this.setState(
+          {
+            to:{  
+              city:this.state.to.city,
+              state:this.state.to.city}}
+          )
+      }
+
         this.newEstimation(this.state.fuel * this.fuelPrice)
       })
 };
@@ -137,304 +157,30 @@ handleChange = (e) => {
 if(!this.state.distance)
 {
     return (
-    <div className="containe">
-      <div className="center">
-      <h1>- TRIP X FUND -</h1>
-        <div className="form-group"> 
-          {/* <label>From</label> */}
-          <input id="from" type="text" className="form-control" placeholder="From" value={this.state.from.city} onChange={this.handleChange}></input>
-        </div>
-        <div className="form-group">
-          {/* <label>To</label> */}
-          <input id="to" type="text" className="form-control" placeholder="To" value={this.state.to.city} onChange={this.handleChange}></input>
-        </div>
-     
-        <div className="form-group"> 
-          {/* <label>Mileage</label> */}
-          <input id="mileage" type="number" className="form-control" placeholder="Mileage" value={this.state.mileage} onChange={this.handleChange}></input>
-        </div>
-       
-        <div className="form-group"> 
-          <label>Food</label>
-          <div class="form-row">
-            <div class="col">
-              <input id="food-day" type="number" class="form-control" placeholder="Number Of Days" value={this.state.food.day} onChange={this.handleChange}></input>
-            </div>
-            <div class="col">
-              <input id="food-price" type="number" class="form-control" placeholder="Budget Per Meal" value={this.state.food.price} onChange={this.handleChange}></input>
-            </div>
-          </div>
-        </div>
-
-        <div className="form-group"> 
-          <label>Stay</label>
-          <div class="form-row">
-            <div class="col">
-              <input id="stay-day" type="number" class="form-control" placeholder="Number Of Days" value={this.state.stay.day} onChange={this.handleChange}></input>
-            </div>
-            <div class="col">
-              <input id="stay-price" type="number" class="form-control" placeholder="Budget Per Day" value={this.state.stay.price} onChange={this.handleChange}></input>
-            </div>
-          </div>
-        </div>
-        
-        <div className="form-group" style={{textAlign:'center'}}> 
-          <button onClick={this.calculate} type="submit" className="btn btn-danger">Submit</button>
-        </div>
-      </div>
-      </div>
-);
+      <Form 
+        from = {this.state.from}
+        to = {this.state.to}
+        mileage = {this.state.mileage}
+        food = {this.state.food}
+        stay = {this.state.stay}
+        handleChange = {this.handleChange}
+        calculate = {this.calculate}
+        ></Form>  
+    );
 }else{
   return(
-    <>
-  <div className="containe d-none d-lg-block">
-    <div className="center">
-      <h1>- TRIP X FUND -</h1>
-      <div class="row dashboard">
-        <div className="col">
-          <div class="card text-white bg-dark mb-3" >
-            <div class="card-header">From</div>
-            <div class="card-body">
-                <h5 class="card-title">{this.state.from.city}</h5>
-                <p class="card-text">{this.state.from.state.toLowerCase()}</p>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div class="card text-white bg-dark mb-3" >
-            <div class="card-header">To</div>
-            <div class="card-body">
-                <h5 class="card-title">{this.state.to.city}</h5>
-                <p class="card-text">{this.state.to.state.toLowerCase()}</p>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div class="card text-white bg-dark mb-3" >
-            <div class="card-header">Duration</div>
-            <div class="card-body">
-                <h5 class="card-title">{this.state.food.day} Days</h5>
-                <p class="card-text">{this.state.stay.day} Nights</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="col">
-          <div class="card text-white bg-dark mb-3" >
-            <div class="card-header">Mileage</div>
-            <div class="card-body">
-                <h5 class="card-title">{this.state.mileage} Km/L</h5>
-                <p class="card-text">Average</p>
-            </div>
-          </div>
-        </div>
-        </div>
-
-
-        <div class="row dashboard">
-        <div className="col">
-          <div class="card text-white bg-danger mb-3" >
-            <div class="card-header">Distance</div>
-            <div class="card-body">
-                <h5 class="card-title">{this.state.distance} Kms</h5>
-                <p class="card-text">One Way</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="col">
-          <div class="card text-white bg-danger mb-3" >
-            <div class="card-header">Ride Time</div>
-            <div class="card-body">
-                <h5 class="card-title">{this.state.time}</h5>
-                <p class="card-text">Approx</p>
-            </div>
-          </div>
-        </div>
-        
-        <div className="col">
-          <div class="card text-white bg-danger mb-3" >
-            <div class="card-header">Fuel Needed</div>
-            <div class="card-body">
-                <h5 class="card-title">{this.state.fuel} Liters</h5>
-                <p class="card-text">One Way : {this.state.fuel/2} Liters</p>
-            </div>
-          </div>
-        </div>
-        </div>
-        <div className="row dashboard">
-        <div className="col">
-          <div class="card text-white bg-danger mb-3" >
-            <div class="card-header">Price For Fuel</div>
-            <div class="card-body">
-                <h5 class="card-title">{this.state.price.fuel} Rs</h5>
-                <p class="card-text">Price : {this.fuelPrice} /Liter</p>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div class="card text-white bg-danger mb-3" >
-            <div class="card-header">Price For Stay</div>
-            <div class="card-body">
-                <h5 class="card-title">{this.state.price.stay} Rs</h5>
-                <p class="card-text">Stay : {this.state.stay.price} per day</p>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div class="card text-white bg-danger mb-3" >
-            <div class="card-header">Price For Food</div>
-            <div class="card-body">
-                <h5 class="card-title">{this.state.price.food} Rs</h5>
-                <p class="card-text">Stay : {this.state.food.price} per day</p>
-            </div>
-          </div>
-        </div>
-
-        
-        </div>
-        <div className='row dashboard'>
-                  
-        <div className="col">
-          <div class="card text-white bg-danger mb-3" >
-            <div class="card-header">Grand Total</div>
-            <div class="card-body">
-                <h5 class="card-title" >{this.state.price.fuel+this.state.price.food+this.state.price.stay} Rs</h5>
-                <p class="card-text">Approx</p>
-            </div>
-          </div>
-        </div>
-     </div>
-     
-     <div className="form-group" style={{textAlign:'center'}}> 
-          <button onClick={this.reset} type="submit" className="btn btn-danger">Reset</button>
-        </div>
-    </div>
-</div>
-
-{/* Mobile */}
-<div className="containe d-lg-none">
-<div className="center">
-  <h1>- TRIP X FUND -</h1>
-  <div className="dashboard">
-    <div className="col">
-      <div class="card text-white bg-dark mb-3" >
-        <div class="card-header">From</div>
-        <div class="card-body">
-            <h5 class="card-title">{this.state.from.city}</h5>
-            <p class="card-text">{this.state.from.state.toLowerCase()}</p>
-        </div>
-      </div>
-    </div>
-    <div className="col">
-      <div class="card text-white bg-dark mb-3" >
-        <div class="card-header">To</div>
-        <div class="card-body">
-            <h5 class="card-title">{this.state.to.city}</h5>
-            <p class="card-text">{this.state.to.state.toLowerCase()}</p>
-        </div>
-      </div>
-    </div>
-    <div className="col">
-      <div class="card text-white bg-dark mb-3" >
-        <div class="card-header">Duration</div>
-        <div class="card-body">
-            <h5 class="card-title">{this.state.food.day} Days</h5>
-            <p class="card-text">{this.state.stay.day} Nights</p>
-        </div>
-      </div>
-    </div>
-
-    <div className="col">
-      <div class="card text-white bg-dark mb-3" >
-        <div class="card-header">Mileage</div>
-        <div class="card-body">
-            <h5 class="card-title">{this.state.mileage} Km/L</h5>
-            <p class="card-text">Average</p>
-        </div>
-      </div>
-    </div>
-
-
-    <div className="col">
-      <div class="card text-white bg-danger mb-3" >
-        <div class="card-header">Distance</div>
-        <div class="card-body">
-            <h5 class="card-title">{this.state.distance} Kms</h5>
-            <p class="card-text">One Way</p>
-        </div>
-      </div>
-    </div>
-
-    <div className="col">
-      <div class="card text-white bg-danger mb-3" >
-        <div class="card-header">Ride Time</div>
-        <div class="card-body">
-            <h5 class="card-title">{this.state.time}</h5>
-            <p class="card-text">Approx</p>
-        </div>
-      </div>
-    </div>
-    
-    <div className="col">
-      <div class="card text-white bg-danger mb-3" >
-        <div class="card-header">Fuel Needed</div>
-        <div class="card-body">
-            <h5 class="card-title">{this.state.fuel} Liters</h5>
-            <p class="card-text">One Way : {this.state.fuel/2} Liters</p>
-        </div>
-      </div>
-    </div>
-    <div className="col">
-      <div class="card text-white bg-danger mb-3" >
-        <div class="card-header">Price For Fuel</div>
-        <div class="card-body">
-            <h5 class="card-title">{this.state.price.fuel} Rs</h5>
-            <p class="card-text">Price : {this.fuelPrice} /Liter</p>
-        </div>
-      </div>
-    </div>
-    <div className="col">
-      <div class="card text-white bg-danger mb-3" >
-        <div class="card-header">Price For Stay</div>
-        <div class="card-body">
-            <h5 class="card-title">{this.state.price.stay} Rs</h5>
-            <p class="card-text">Stay : {this.state.stay.price} per day</p>
-        </div>
-      </div>
-    </div>
-    <div className="col">
-      <div class="card text-white bg-danger mb-3" >
-        <div class="card-header">Price For Food</div>
-        <div class="card-body">
-            <h5 class="card-title">{this.state.price.food} Rs</h5>
-            <p class="card-text">Stay : {this.state.food.price} per day</p>
-        </div>
-    </div>
-
-    
-    </div>
-              
-    <div className="col">
-      <div class="card text-white bg-danger mb-3" >
-        <div class="card-header">Grand Total</div>
-        <div class="card-body">
-            <h5 class="card-title" >{(this.state.price.fuel)+this.state.price.food+this.state.price.stay} Rs</h5>
-            <p class="card-text">Approx</p>
-        </div>
-      </div>
-    </div>
-
-    
-    <div className="form-group" style={{textAlign:'center'}}> 
-      <button onClick={this.reset} type="submit" className="btn btn-danger">Reset</button>
-    </div>
-
-    
-</div>
-</div>
-</div>
-</>
+    <Dashboard
+      from = {this.state.from}
+      to = {this.state.to}
+      food = {this.state.food}
+      stay = {this.state.stay}  
+      mileage = {this.state.mileage}
+      distance = {this.state.distance}
+      time = {this.state.time}
+      fuel = {this.state.fuel}
+      price = {this.state.price}
+      reset = {this.reset}
+    ></Dashboard>
     );
   }
 }
