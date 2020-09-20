@@ -41,6 +41,7 @@ newEstimation = (fuelPrice) =>
 }
 
   calculate = () => {
+    console.log('Calculating')
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -48,10 +49,9 @@ newEstimation = (fuelPrice) =>
           "locations": [this.state.from.city,this.state.to.city]
         })
     };
-    fetch('http://www.mapquestapi.com/directions/v2/routematrix?key=NWocdztSYHRGGxghPivCkuoeYaVvMQx1', requestOptions)
+    fetch('https://www.mapquestapi.com/directions/v2/routematrix?key=NWocdztSYHRGGxghPivCkuoeYaVvMQx1', requestOptions)
     .then(response => response.json())
     .then(data => {
-      console.log(this.state.food.price,this.state.food.day)
 
       let fuel = 0
       if(this.state.mileage)
