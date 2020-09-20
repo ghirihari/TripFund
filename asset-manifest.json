@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/TripFund/static/css/main.ff2357bb.chunk.css",
+    "main.css": "/TripFund/static/css/main.d739b11f.chunk.css",
     "main.js": "/TripFund/static/js/main.e158a16e.chunk.js",
     "main.js.map": "/TripFund/static/js/main.e158a16e.chunk.js.map",
     "runtime-main.js": "/TripFund/static/js/runtime-main.4c683c1a.js",
@@ -8,15 +8,15 @@
     "static/js/2.17837d09.chunk.js": "/TripFund/static/js/2.17837d09.chunk.js",
     "static/js/2.17837d09.chunk.js.map": "/TripFund/static/js/2.17837d09.chunk.js.map",
     "index.html": "/TripFund/index.html",
-    "precache-manifest.f29d4d702bb1659cc33ebf164c24a92f.js": "/TripFund/precache-manifest.f29d4d702bb1659cc33ebf164c24a92f.js",
+    "precache-manifest.5c97022243fa45bc7a473769a0f20ad4.js": "/TripFund/precache-manifest.5c97022243fa45bc7a473769a0f20ad4.js",
     "service-worker.js": "/TripFund/service-worker.js",
-    "static/css/main.ff2357bb.chunk.css.map": "/TripFund/static/css/main.ff2357bb.chunk.css.map",
+    "static/css/main.d739b11f.chunk.css.map": "/TripFund/static/css/main.d739b11f.chunk.css.map",
     "static/js/2.17837d09.chunk.js.LICENSE.txt": "/TripFund/static/js/2.17837d09.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.4c683c1a.js",
     "static/js/2.17837d09.chunk.js",
-    "static/css/main.ff2357bb.chunk.css",
+    "static/css/main.d739b11f.chunk.css",
     "static/js/main.e158a16e.chunk.js"
   ]
 }
