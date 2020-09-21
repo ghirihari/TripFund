@@ -278,7 +278,7 @@ export default class Dashboard extends Component {
         
             
             <div className="form-group" style={{textAlign:'center'}}> 
-                <button onClick={this.props.copy} className="btn btn-warning btn-lg">{this.state.status}</button>
+                <button onClick={this.copy} className="btn btn-warning btn-lg">{this.state.status}</button>
                 <button onClick={this.props.reset} type="submit" className="btn btn-danger btn-lg">Reset</button>
             </div>
         
