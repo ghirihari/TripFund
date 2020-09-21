@@ -22,8 +22,8 @@ export default class Dashboard extends Component {
             "Riding Time: "+this.props.time+"\n"+
             "Fuel Needed: "+this.props.fuel+ " L\n*Budget*\n"+
             "Fuel ("+this.props.fuelPrice+"*"+this.props.fuel+"): "+this.props.price.fuel+" Rs\n"+
-            "Stay ("+this.props.stay.price+"*"+this.props.stay.day+"): "+this.props.price.food+" Rs\n"+
-            "Food ("+this.props.food.price+"*"+this.props.food.day+"): "+this.props.price.stay+" Rs\n"+
+            "Stay ("+this.props.stay.price+"*"+this.props.stay.day+"): "+this.props.price.stay+" Rs\n"+
+            "Food ("+this.props.food.price+"* 3("+this.props.food.day+")): "+this.props.price.food+" Rs\n"+
             "Total: "+this.Total+"Rs \n";
             
         navigator.clipboard.writeText(this.report);
@@ -282,7 +282,7 @@ export default class Dashboard extends Component {
                 <button onClick={this.props.reset} type="submit" className="btn btn-danger btn-lg">Reset</button>
             </div>
         
-            
+
         </div>
         </div>
         </div>
