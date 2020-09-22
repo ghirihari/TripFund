@@ -4,9 +4,8 @@ export default class Form extends Component {
 
 render(){
     return(
-        <div className="containe">
-  
-        <div className="center">
+      <div className="containe">
+      <div className="center">
       <h1>- TRIP X FUND -</h1>
         <div className="form-group"> 
           {/* <label>From</label> */}
