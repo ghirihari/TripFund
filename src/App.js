@@ -12,7 +12,7 @@ class App extends Component {
       <Router>
         <Switch>
           <Route path='/Home' component={Home} /> 
-          <Route path='/TripFund' component={TripFund} />
+          <Route path='/Fund' component={TripFund} />
           <Route path='/Bikes' component={Bikes} />
         </Switch>
       </Router>         

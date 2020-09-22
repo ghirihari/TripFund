@@ -8,30 +8,30 @@ class TripFund extends Component {
   constructor()
   {
     super();
-    // this.state = {
-    //   from:{city:"",state:""},
-    //   to:{city:"",state:""},
-    //   price:{fuel:null,food:null,stay:null},
-    //   stay:{day:null,price:null},
-    //   food:{day:null,price:null},
-    //   distance:null,
-    //   time:null,
-    //   fuel:null,
-    //   mileage:null
-    // }
-
     this.state = {
-      from:{city:"Coimbatore",state:""},
-      to:{city:"Panaji",state:""},
-      stay:{day:6,price:800},
-      food:{day:7,price:150},
-      mileage:40,
-      
+      from:{city:"",state:""},
+      to:{city:"",state:""},
       price:{fuel:null,food:null,stay:null},
+      stay:{day:null,price:null},
+      food:{day:null,price:null},
       distance:null,
       time:null,
-      fuel:null
+      fuel:null,
+      mileage:null
     }
+
+    // this.state = {
+    //   from:{city:"Coimbatore",state:""},
+    //   to:{city:"Panaji",state:""},
+    //   stay:{day:6,price:800},
+    //   food:{day:7,price:150},
+    //   mileage:40,
+      
+    //   price:{fuel:null,food:null,stay:null},
+    //   distance:null,
+    //   time:null,
+    //   fuel:null
+    // }
     this.fuelPrice = 84;
   }
 
