@@ -11,9 +11,10 @@ class App extends Component {
     return(
       <Router>
         <Switch>
-          <Route path='/Home' component={Home} /> 
+        <Route path='/' component={TripFund} />
+          {/* <Route path='/Home' component={Home} /> 
           <Route path='/Fund' component={TripFund} />
-          <Route path='/Bikes' component={Bikes} />
+          <Route path='/Bikes' component={Bikes} /> */}
         </Switch>
       </Router>         
     )
