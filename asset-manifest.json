@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/TripFund/static/css/main.54319fe1.chunk.css",
-    "main.js": "/TripFund/static/js/main.77986c27.chunk.js",
-    "main.js.map": "/TripFund/static/js/main.77986c27.chunk.js.map",
+    "main.css": "/TripFund/static/css/main.c1b62326.chunk.css",
+    "main.js": "/TripFund/static/js/main.347705f1.chunk.js",
+    "main.js.map": "/TripFund/static/js/main.347705f1.chunk.js.map",
     "runtime-main.js": "/TripFund/static/js/runtime-main.4c683c1a.js",
     "runtime-main.js.map": "/TripFund/static/js/runtime-main.4c683c1a.js.map",
-    "static/js/2.2a474d0b.chunk.js": "/TripFund/static/js/2.2a474d0b.chunk.js",
-    "static/js/2.2a474d0b.chunk.js.map": "/TripFund/static/js/2.2a474d0b.chunk.js.map",
+    "static/js/2.6e13698e.chunk.js": "/TripFund/static/js/2.6e13698e.chunk.js",
+    "static/js/2.6e13698e.chunk.js.map": "/TripFund/static/js/2.6e13698e.chunk.js.map",
     "index.html": "/TripFund/index.html",
-    "precache-manifest.e13181984fe63bf8a486fa53f7fafc86.js": "/TripFund/precache-manifest.e13181984fe63bf8a486fa53f7fafc86.js",
+    "precache-manifest.0c8011b668d3ccecfd06dad3758ed273.js": "/TripFund/precache-manifest.0c8011b668d3ccecfd06dad3758ed273.js",
     "service-worker.js": "/TripFund/service-worker.js",
-    "static/css/main.54319fe1.chunk.css.map": "/TripFund/static/css/main.54319fe1.chunk.css.map",
-    "static/js/2.2a474d0b.chunk.js.LICENSE.txt": "/TripFund/static/js/2.2a474d0b.chunk.js.LICENSE.txt"
+    "static/css/main.c1b62326.chunk.css.map": "/TripFund/static/css/main.c1b62326.chunk.css.map",
+    "static/js/2.6e13698e.chunk.js.LICENSE.txt": "/TripFund/static/js/2.6e13698e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.4c683c1a.js",
-    "static/js/2.2a474d0b.chunk.js",
-    "static/css/main.54319fe1.chunk.css",
-    "static/js/main.77986c27.chunk.js"
+    "static/js/2.6e13698e.chunk.js",
+    "static/css/main.c1b62326.chunk.css",
+    "static/js/main.347705f1.chunk.js"
   ]
 }
