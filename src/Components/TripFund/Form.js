@@ -2,18 +2,30 @@ import React, { Component } from 'react';
 
 export default class Form extends Component {
 
+  constructor(){
+    super();
+    
+  }
+
+
 render(){
     return(
       <div className="containe">
       <div className="center">
       <h1>- TRIP X FUND -</h1>
-        <div className="form-group"> 
+        <div className="form-group place"> 
           {/* <label>From</label> */}
           <input id="from" type="text" className="form-control" placeholder="From" value={this.props.from.city} onChange={this.props.handleChange}></input>
+          {this.props.from.valid===false && 
+            <label class="exception" style={{margin:'0.5rem'}}>Place Not Found</label>
+          }
         </div>
-        <div className="form-group">
+        <div className="form-group place">
           {/* <label>To</label> */}
           <input id="to" type="text" className="form-control" placeholder="To" value={this.props.to.city} onChange={this.props.handleChange}></input>
+          {this.props.to.valid===false && 
+            <label class="exception" style={{margin:'0.5rem'}}>Place Not Found</label>
+          }
         </div>
      
         <div className="form-group"> 
@@ -46,7 +58,7 @@ render(){
         </div>
         
         <div className="form-group" style={{textAlign:'center'}}> 
-          <button onClick={this.props.calculate} type="submit" className="btn btn-danger">Submit</button>
+          <button onClick={this.props.calculate} type="submit" className="btn btn-danger" >Submit</button>
         </div>
       </div>
       </div>

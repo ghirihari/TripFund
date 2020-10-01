@@ -9,8 +9,8 @@ class TripFund extends Component {
   {
     super();
     this.state = {
-      from:{city:"",state:""},
-      to:{city:"",state:""},
+      from:{city:"",state:"",valid:null},
+      to:{city:"",state:"",valid:null},
       price:{fuel:null,food:null,stay:null},
       stay:{day:null,price:null},
       food:{day:null,price:null},
@@ -32,7 +32,29 @@ class TripFund extends Component {
     //   time:null,
     //   fuel:null
     // }
+    
     this.fuelPrice = 84;
+    this.data = (require('../../cities.json'));
+    this.places = this.getPlaces();    
+
+  }
+
+  getPlaces = () => {
+    var state = [];
+    this.data.map((value) => {
+      if(!state.includes(value.State.toLowerCase())){
+        state.push(value.State.toLowerCase());
+      }
+    });
+
+    this.data.map((value) => {
+      if(!state.includes(value.City.toLowerCase())){
+        state.push(value.City.toLowerCase());
+      }
+    });
+
+    console.log(state)
+    return state;
   }
 
   secondsToHms = (d) => {
@@ -93,7 +115,15 @@ newEstimation = (fuelPrice) =>
                   }
                 })
           
-        if(!this.state.to.city)
+          this.fixNames();
+          this.newEstimation(this.state.fuel * this.fuelPrice)
+      }
+        })
+      
+};
+
+fixNames = () => {
+  if(!this.state.to.city)
         {
           this.setState(
             {
@@ -111,12 +141,26 @@ newEstimation = (fuelPrice) =>
                 state:this.state.to.city}}
             )
         }
-
-          this.newEstimation(this.state.fuel * this.fuelPrice)
-      }
-        })
-      
-};
+          
+        if(!this.state.from.city)
+        {
+          this.setState(
+            {
+              from:{
+                city:this.state.from.state,
+                state:this.state.from.state}}
+            )
+        }
+        if(!this.state.from.state)
+        {
+          this.setState(
+            {
+              from:{  
+                city:this.state.from.city,
+                state:this.state.from.city}}
+            )
+        }
+}
 
 reset = () =>
 {
@@ -138,11 +182,19 @@ handleChange = (e) => {
   e.preventDefault();
   if(e.target.id === "from")
   {
-    this.setState({from:{city:e.target.value,state:""}})
+    if(this.places.includes(e.target.value.toLowerCase())){
+      this.setState({from:{city:e.target.value,state:"",valid:true}})
+    }else{
+      this.setState({from:{city:e.target.value,state:"",valid:false}})
+    }
   }
   if(e.target.id === "to")
-  {
-    this.setState({to:{city:e.target.value,state:""}})
+  { 
+    if(this.places.includes(e.target.value.toLowerCase())){
+      this.setState({to:{city:e.target.value,state:"",valid:true}})
+    }else{
+      this.setState({to:{city:e.target.value,state:"",valid:false}})
+    }
   }
   if(e.target.id === "mileage")
   {
@@ -169,7 +221,7 @@ handleChange = (e) => {
   {
     this.setState({mileage:e.target.value})
   }
-  console.log(e.target.id,e.target.value)
+  // console.log(e.target.id,e.target.value)
 }
   render(){
 if(!this.state.distance)

@@ -70,3 +70,14 @@
   font-style: italic;
   }
   
+  .exception{
+    /* position: relative;
+    top: -39px;
+  */
+    margin: 0.5rem;
+    color: #DC3545
+  }
+
+  .place{
+    text-align: end;
+  }
